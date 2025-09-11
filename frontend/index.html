@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Appointment Booking System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏥 Hospital Appointment Booking System</h1>
+        </header>
+        
+        <main>
+            <div class="booking-form">
+                <h2>Book Your Appointment</h2>
+                <form id="appointmentForm">
+                    <div class="form-group">
+                        <label for="doctorId">Doctor ID:</label>
+                        <select id="doctorId" required>
+                            <option value="">Select Doctor</option>
+                            <option value="D101">Dr. Smith (D101)</option>
+                            <option value="D102">Dr. Johnson (D102)</option>
+                            <option value="D103">Dr. Williams (D103)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="patientName">Patient Name:</label>
+                        <input type="text" id="patientName" required placeholder="Enter patient name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="appointmentDate">Appointment Date:</label>
+                        <input type="date" id="appointmentDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="timeSlot">Time Slot:</label>
+                        <select id="timeSlot" required>
+                            <option value="">Select Time</option>
+                            <option value="9:00 AM">9:00 AM</option>
+                            <option value="10:00 AM">10:00 AM</option>
+                            <option value="11:00 AM">11:00 AM</option>
+                            <option value="2:00 PM">2:00 PM</option>
+                            <option value="3:00 PM">3:00 PM</option>
+                            <option value="4:00 PM">4:00 PM</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">Book Appointment</button>
+                </form>
+            </div>
+            
+            <div class="result-section">
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Booking your appointment...</p>
+                </div>
+                
+                <div id="result" class="result hidden"></div>
+            </div>
+            
+            <div class="availability-section">
+                <h3>Check Doctor Availability</h3>
+                <button id="checkAvailability" class="btn-secondary">View Available Slots</button>
+                <div id="availabilityResult" class="availability-result hidden"></div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

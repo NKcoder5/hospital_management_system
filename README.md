@@ -1,85 +1,106 @@
-# Hospital Management System
+# Hospital Appointment Booking System
 
-A simple Java-based Hospital Management System that allows scheduling appointments with doctors.
+A complete Hospital Appointment Booking System with Java backend and web frontend that allows patients to book doctor appointments with availability checking and custom exception handling.
+
+## Features
+
+- ✅ Doctor availability checking
+- ✅ Appointment booking with confirmation
+- ✅ Custom exception handling for unavailable slots
+- ✅ Web-based user interface
+- ✅ RESTful API backend
+- ✅ Real-time availability status
 
 ## Project Structure
 
 ```
-src/
-├── com/wipro/hospital/
-│   ├── bean/
-│   │   └── AppointmentBean.java          # Data model for appointments
-│   ├── dao/
-│   │   └── AppointmentDAO.java           # Data access layer
-│   ├── service/
-│   │   └── AppointmentService.java       # Business logic and main application
-│   └── util/
-│       └── DoctorUnavailableException.java # Custom exception class
+Hospital_management_system/
+├── src/com/wipro/hospital/
+│   ├── bean/AppointmentBean.java          # Data model for appointments
+│   ├── util/DoctorUnavailableException.java # Custom exception class
+│   ├── dao/AppointmentDAO.java            # Data access layer
+│   └── service/AppointmentService.java    # Business logic layer
+├── frontend/
+│   ├── index.html                         # Web interface
+│   ├── styles.css                         # Styling
+│   └── script.js                          # Frontend logic
+├── server.js                              # Node.js API server
+├── package.json                           # Dependencies
+└── README.md                              # This file
 ```
 
-## Prerequisites
+## Java Backend Classes
 
-- Java JDK 8 or higher
-- Windows PowerShell or Command Prompt
+### 1. AppointmentBean (com.wipro.hospital.bean)
+- Holds appointment information including doctor, patient, and time details
+- Contains: appointmentId, doctorId, patientName, appointmentDate, timeSlot
 
-## How to Run
+### 2. DoctorUnavailableException (com.wipro.hospital.util)
+- Custom exception thrown when doctor is not available
+- Implements toString() method for error messaging
 
-### Method 1: Using the batch file (Recommended for Windows)
-1. Double-click on `run.bat` file
-2. The application will compile and run automatically
+### 3. AppointmentDAO (com.wipro.hospital.dao)
+- Data access layer with availability checking and booking logic
+- Methods: checkAvailability(), bookAppointment()
 
-### Method 2: Manual compilation and execution
+### 4. AppointmentService (com.wipro.hospital.service)
+- Business logic layer with validation and exception handling
+- Methods: scheduleAppointment(), main() for testing
 
-#### Step 1: Compile all Java files
+## Quick Start
+
+### Running the Java Backend
 ```bash
-javac -cp src src/com/wipro/hospital/bean/AppointmentBean.java
-javac -cp src src/com/wipro/hospital/util/DoctorUnavailableException.java
-javac -cp src src/com/wipro/hospital/dao/AppointmentDAO.java
-javac -cp src src/com/wipro/hospital/service/AppointmentService.java
+# Compile Java classes
+javac -d . src/com/wipro/hospital/**/*.java
+
+# Run the service
+java com.wipro.hospital.service.AppointmentService
 ```
 
-#### Step 2: Run the application
+### Running the Web Application
 ```bash
-java -cp src com.wipro.hospital.service.AppointmentService
+# Install dependencies
+npm install
+
+# Start the server
+npm start
 ```
 
-## How to Use
+Visit `http://localhost:3000` to access the web interface.
 
-1. **Enter Doctor ID**: Provide a unique identifier for the doctor
-2. **Enter Patient Name**: Enter the name of the patient
-3. **Enter Appointment Date**: Use format yyyy-mm-dd (e.g., 2024-01-15)
-4. **Enter Time Slot**: Specify the time (e.g., 10:00 AM)
+## API Endpoints
 
-The system will:
-- Check if the doctor is available at the specified time slot
-- Book the appointment if available
-- Generate a unique appointment ID
-- Handle cases where the doctor is unavailable
+- `POST /api/appointments` - Book new appointment
+- `GET /api/availability` - Check all doctor availability
+- `GET /api/appointments/:doctorId/:timeSlot` - Check specific slot
 
-## Features
+## Test Cases
 
-- **Appointment Scheduling**: Book appointments with doctors
-- **Availability Check**: Verify doctor availability before booking
-- **Exception Handling**: Custom exception for unavailable doctors
-- **Data Persistence**: In-memory storage using HashMap
-- **Input Validation**: User-friendly console interface
+### Test Case 1: Available Slot
+- **Input**: Doctor ID: D101, Time: 9:00 AM
+- **Expected**: Appointment Confirmed: AID123
 
-## Error Resolution
+### Test Case 2: Unavailable Slot
+- **Input**: Doctor ID: D101, Time: 10:00 AM (pre-booked)
+- **Expected**: DoctorUnavailableException
 
-All compilation errors have been resolved:
-- ✅ Proper package structure
-- ✅ Correct import statements
-- ✅ Valid Java syntax
-- ✅ Proper classpath configuration
+## Pre-booked Slots (for testing)
+- D101 at 10:00 AM
+- D102 at 2:00 PM
 
-## Sample Output
+## Technologies Used
+- **Backend**: Java (Core Java concepts)
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
+- **API Server**: Node.js with Express
+- **Storage**: In-memory (can be extended to MongoDB)
 
-```
-Enter Doctor ID: D001
-Enter Patient Name: John Doe
-Enter Appointment Date (yyyy-mm-dd): 2024-01-15
-Enter Time Slot (e.g., 10:00 AM): 10:00 AM
-Appointment Confirmed: AID1
-```
+## Usage Instructions
 
-The project is now error-free and ready to run!
+1. **Web Interface**: Open browser and go to `http://localhost:3000`
+2. **Select Doctor**: Choose from available doctors (D101, D102, D103)
+3. **Enter Details**: Fill patient name, date, and time slot
+4. **Book Appointment**: Click "Book Appointment" button
+5. **Check Availability**: Use "View Available Slots" to see current status
+
+The system will automatically handle availability checking and show appropriate success/error messages based on the Java backend logic.
