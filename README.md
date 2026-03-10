@@ -1,106 +1,89 @@
-# Hospital Appointment Booking System
+# 🏥 CareSync - Hospital Management System
+### A Seamless Multi-Layered Patient Care & Appointment Governance System
 
-A complete Hospital Appointment Booking System with Java backend and web frontend that allows patients to book doctor appointments with availability checking and custom exception handling.
+[![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)](https://www.java.com/)
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://www.w3.org/html/)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://www.w3.org/Style/CSS/)
 
-## Features
+**CareSync** is a professional-grade Hospital Appointment Management System that bridges a high-performance **Java Backend** with a modern **Web Interface**. Designed for reliability and speed, it ensures doctors and patients are synchronized with zero scheduling conflicts.
 
-- ✅ Doctor availability checking
-- ✅ Appointment booking with confirmation
-- ✅ Custom exception handling for unavailable slots
-- ✅ Web-based user interface
-- ✅ RESTful API backend
-- ✅ Real-time availability status
+---
 
-## Project Structure
+## 🚀 Key Modules & Capabilities
 
-```
-Hospital_management_system/
-├── src/com/wipro/hospital/
-│   ├── bean/AppointmentBean.java          # Data model for appointments
-│   ├── util/DoctorUnavailableException.java # Custom exception class
-│   ├── dao/AppointmentDAO.java            # Data access layer
-│   └── service/AppointmentService.java    # Business logic layer
-├── frontend/
-│   ├── index.html                         # Web interface
-│   ├── styles.css                         # Styling
-│   └── script.js                          # Frontend logic
-├── server.js                              # Node.js API server
-├── package.json                           # Dependencies
-└── README.md                              # This file
-```
+### 📅 Advanced Appointment Governance
+*   **Doctor Availability Engine**: Real-time checking of doctor schedules (D101, D102, D103) with millisecond precision.
+*   **Secure Booking Workflow**: A streamlined process for patients to reserve slots with instant validation.
+*   **Conflict Resolution**: Custom `DoctorUnavailableException` handling ensures no double-bookings ever occur.
 
-## Java Backend Classes
+### ⚙️ Multi-Layer Architecture (Java Core)
+*   **Service Layer**: A robust `AppointmentService` managing business logic and exception hierarchies.
+*   **Data Access (DAO)**: Optimized `AppointmentDAO` for high-speed availability queries and atomic booking operations.
+*   **Encapsulated Data**: Professional `AppointmentBean` structure for type-safe data transfer between layers.
 
-### 1. AppointmentBean (com.wipro.hospital.bean)
-- Holds appointment information including doctor, patient, and time details
-- Contains: appointmentId, doctorId, patientName, appointmentDate, timeSlot
+### 🌐 Modern Web Command Center
+*   **Responsive UI**: A sleek, accessible frontend for booking and viewing available slots.
+*   **RESTful Bridge**: A Node.js API server (Express) acting as a high-speed gateway between the web and Java core.
+*   **Real-Time Status**: Instant visual feedback on slot availability and booking confirmations.
 
-### 2. DoctorUnavailableException (com.wipro.hospital.util)
-- Custom exception thrown when doctor is not available
-- Implements toString() method for error messaging
+---
 
-### 3. AppointmentDAO (com.wipro.hospital.dao)
-- Data access layer with availability checking and booking logic
-- Methods: checkAvailability(), bookAppointment()
+## 🎨 Design & Interaction
+*   **Premium Visuals**: Clean, medical-grade color palette with high-contrast typography for accessibility.
+*   **Intuitive UX**: A zero-learning-curve booking interface designed for speed and clarity.
+*   **Dynamic Feedback**: Professional success/error notifications powered by the Java exception engine.
 
-### 4. AppointmentService (com.wipro.hospital.service)
-- Business logic layer with validation and exception handling
-- Methods: scheduleAppointment(), main() for testing
+---
 
-## Quick Start
+## 🛠️ Technology Stack
+*   **Backend Core**: Java (OOP Principles, Custom Exception Handling, Service/DAO Patterns)
+*   **API Gateway**: Node.js & Express.js (High-Speed Request Routing)
+*   **Frontend**: Semantic HTML5, CSS3, ES6+ JavaScript
+*   **Communication**: REST API (JSON Payload Exchange)
+*   **Storage**: High-performance In-Memory model (Ready for SQL/NoSQL expansion)
 
-### Running the Java Backend
-```bash
-# Compile Java classes
-javac -d . src/com/wipro/hospital/**/*.java
+---
 
-# Run the service
-java com.wipro.hospital.service.AppointmentService
-```
+## ⚡ Performance Engineering
+*   **Exception-Driven Logic**: Uses a custom exception hierarchy to handle business rules, making the code extremely maintainable and robust.
+*   **Stateless API Design**: The Node.js bridge ensures scalable request handling without server-side session overhead.
+*   **Optimized DAO Layer**: Dedicated availability checking methods reduce database/memory overhead for lookups.
 
-### Running the Web Application
-```bash
-# Install dependencies
-npm install
+---
 
-# Start the server
-npm start
-```
+## 📦 Installation & Setup
 
-Visit `http://localhost:3000` to access the web interface.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/NKcoder5/hospital_management_system.git
+   cd hospital_management_system
+   ```
 
-## API Endpoints
+2. **Compile Java Backend**:
+   ```bash
+   # Compile all source files into the class path
+   javac -d . src/com/wipro/hospital/**/*.java
+   ```
 
-- `POST /api/appointments` - Book new appointment
-- `GET /api/availability` - Check all doctor availability
-- `GET /api/appointments/:doctorId/:timeSlot` - Check specific slot
+3. **Install & Start Node.js Bridge**:
+   ```bash
+   # Install dependencies
+   npm install
 
-## Test Cases
+   # Launch the API server
+   npm start
+   ```
 
-### Test Case 1: Available Slot
-- **Input**: Doctor ID: D101, Time: 9:00 AM
-- **Expected**: Appointment Confirmed: AID123
+4. **Access the System**:
+   *   Open your browser and visit `http://localhost:3000`
+   *   Start booking appointments with doctors (D101, D102, D103).
 
-### Test Case 2: Unavailable Slot
-- **Input**: Doctor ID: D101, Time: 10:00 AM (pre-booked)
-- **Expected**: DoctorUnavailableException
+---
 
-## Pre-booked Slots (for testing)
-- D101 at 10:00 AM
-- D102 at 2:00 PM
+## 📄 License
+Licensed under the **MIT License**.
 
-## Technologies Used
-- **Backend**: Java (Core Java concepts)
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **API Server**: Node.js with Express
-- **Storage**: In-memory (can be extended to MongoDB)
-
-## Usage Instructions
-
-1. **Web Interface**: Open browser and go to `http://localhost:3000`
-2. **Select Doctor**: Choose from available doctors (D101, D102, D103)
-3. **Enter Details**: Fill patient name, date, and time slot
-4. **Book Appointment**: Click "Book Appointment" button
-5. **Check Availability**: Use "View Available Slots" to see current status
-
-The system will automatically handle availability checking and show appropriate success/error messages based on the Java backend logic.
+---
+*Created with ❤️ for Advanced Healthcare Management.*
